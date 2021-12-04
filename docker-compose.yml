@@ -1,0 +1,34 @@
+version: '3'
+services:
+  litespeed:
+    image: litespeedtech/openlitespeed:latest
+    volumes:
+      - ./ols/lsws/conf:/usr/local/lsws/conf
+      - ./ols/lsws/admin-conf:/usr/local/lsws/admin/conf
+      - ./ols/bin/container:/usr/local/bin
+      - ./ols/sites:/var/www/vhosts/
+      - ./ols/acme:/root/.acme.sh/
+      - ./ols/logs:/usr/local/lsws/logs/
+    ports:
+      - 443:443
+      - 443:443/udp
+      - 7080:7080
+    restart: always
+    environment:
+      TZ: Asia/Ho_Chi_Minh
+  haproxy:
+    image: haproxy:latest
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy
+    ports:
+      - 8080:8080
+    restart: always
+    environment:
+      TZ: Asia/Ho_Chi_Minh
+  varnish:
+    image: varnish:stable
+    volumes:
+      - ./varnish:/etc/varnish
+    restart: always
+    environment:
+      TZ: Asia/Ho_Chi_Minh
