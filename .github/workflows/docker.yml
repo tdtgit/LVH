@@ -15,6 +15,7 @@ jobs:
       - name: Run the stack
         run: |
           docker-compose up -d
-          docker-compose logs litespeed --tail all
-          docker-compose logs varnish --tail all
-          docker-compose logs haproxy --tail all
+          sleep 20
+          docker-compose logs --tail all litespeed
+          docker-compose logs --tail all varnish
+          docker-compose logs --tail all haproxy 
