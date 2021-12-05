@@ -14,5 +14,9 @@ jobs:
       - uses: actions/checkout@v2
       - name: Run the stack
         run: docker-compose up -d
-      - name: Get the logs
-        run: docker-compose logs --tail all
+      - name: Litespeed logs
+        run: docker-compose logs litespeed --tail all
+      - name: Varnish logs
+        run: docker-compose logs varnish --tail all
+      - name: HAProxy logs
+        run: docker-compose logs haproxy --tail all
