@@ -6,7 +6,7 @@
 That's it!
 
 ## At the first run
-```docker exec -it lvh_litespeed_1 /bin/sh /usr/local/lsws/admin/misc/admpass.sh```
+```docker-compose exec litespeed /bin/sh /usr/local/lsws/admin/misc/admpass.sh```
 
 ## Let's Encrypt SSL certificate request
 Run inside LVH directory:
