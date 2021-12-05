@@ -1,0 +1,16 @@
+name: "Test Docker Compose"
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron:  '0 7 * * *'
+  push:
+    branches: [ main, develop, feature/*, fix/* ]
+    
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Build the stack
+        run: docker-compose up -d

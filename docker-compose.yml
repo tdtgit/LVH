@@ -9,6 +9,7 @@ services:
       - ./ols/sites:/var/www/vhosts/
       - ./ols/acme:/root/.acme.sh/
       - ./ols/logs:/usr/local/lsws/logs/
+      - /etc/letsencrypt:/etc/letsencrypt
     ports:
       - 443:443
       - 443:443/udp
