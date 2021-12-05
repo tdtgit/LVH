@@ -8,9 +8,11 @@ on:
     branches: [ master, develop, feature/*, fix/* ]
     
 jobs:
-  test:
+  run:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Build the stack
-        run: sh -c '(sleep 60; kill "$$") & docker-compose up'
+      - name: Run the stack
+        run: docker-compose up -d
+      - name: Get the logs
+        run: docker-compose logs --tail all
