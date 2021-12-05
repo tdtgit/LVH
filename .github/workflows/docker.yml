@@ -13,10 +13,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run the stack
-        run: docker-compose up -d
-      - name: Litespeed logs
-        run: docker-compose logs litespeed --tail all
-      - name: Varnish logs
-        run: docker-compose logs varnish --tail all
-      - name: HAProxy logs
-        run: docker-compose logs haproxy --tail all
+        run: |
+          docker-compose up -d
+          docker-compose logs litespeed --tail all
+          docker-compose logs varnish --tail all
+          docker-compose logs haproxy --tail all
